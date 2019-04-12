@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>A Start Page</title>
-
+    <script src="codebase/ext/dhtmlxscheduler_editors.js" type="text/javascript"></script>
     <script src="codebase/dhtmlxscheduler.js" type="text/javascript"></script>
     <script src="codebase/ext/dhtmlxscheduler_minical.js" type="text/javascript"></script>
     <script src="codebase/locale/locale_cn.js" type="text/javascript"></script>
@@ -108,10 +108,8 @@
 
       scheduler.templates.event_class = function (start, end, event) {
           var css = "";
-
           if (event.subject) // if event has subject property then special class should be assigned
               css += "event_" + event.subject;
-
           if (event.id == scheduler.getState().select_id) {
               css += " selected";
           }
@@ -125,8 +123,9 @@
           {key: 'parents', label: '家长端'}
       ];
 
+
       scheduler.config.lightbox.sections = [
-          {name: "description", height: 43, map_to: "text", type: "textarea", focus: true},
+          {name: "description", height: 50, map_to: "text", type: "textarea", focus: true},
           {name: "subject", height: 20, type: "select", options: subject, map_to: "subject"},
           {name: "time", height: 72, type: "time", map_to: "auto"}
       ];
@@ -187,7 +186,6 @@
         if (scheduler.isCalendarVisible()){
             scheduler.destroyCalendar();
         } else {
-
             scheduler.renderCalendar({
                 position:"dhx_minical_icon",
                 date:scheduler._date,
